@@ -9947,6 +9947,13 @@ components:
           $ref: '#/components/schemas/Setup-Order-Redirect-URL'
         trial_duration:
           $ref: '#/components/schemas/Subscription-Trial-Duration'
+        # LOCAL OVERLAY (not in upstream spec): the create-subscription endpoint
+        # accepts payment_method_id to attach a saved card off-session, and it is
+        # used in Revolut's own docs examples (Req-Subscription-With-Trial /
+        # Skip-Trial), but the upstream Subscription-Creation schema omits it.
+        # See openapi-specs-overrides.md. Remove if upstream adds it.
+        payment_method_id:
+          $ref: '#/components/schemas/Payment-Method-Id'
     Subscription-Update:
       type: object
       properties:
